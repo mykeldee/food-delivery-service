@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const restResponse = require('../lib/rest_response');
 const fs = require('fs');
 const uuid = require('uuid');
+const {validateEmail} = require('../utils/user')
 
 console.log(models)
 
@@ -21,7 +22,13 @@ const userController = {
       userData.last_name = req.body.last_name;
     }
     if (req.body.email_id !== undefined && req.body.email_id !== '') {
-      userData.email_id = req.body.email_id;
+      if(validateEmail(req.body.email_id)){
+        userData.email_id = req.body.email_id;
+      }else{
+        res.status = 400;
+        res.json({ success: false, message: 'Please provide a valid email address' });
+        return res;
+      }
     }
     if (req.body.password !== undefined && req.body.password !== '') {
       userData.password = req.body.password;

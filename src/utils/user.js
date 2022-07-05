@@ -14,4 +14,15 @@ const userUtils = {
     }
 };
 
-module.exports = userUtils;
+const validateEmail = (email) => {
+    let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let match = email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
+
+    if (re && match !== null){
+        return true
+    }
+    
+    return false;
+};
+
+module.exports = {validateEmail, userUtils}
