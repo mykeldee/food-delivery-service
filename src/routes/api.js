@@ -22,16 +22,8 @@ module.exports = (requireAuth) => {
     router.get('/v1/user/profileImage', requireAuth, userController.readProfileImage);
 
     /* User Password routes */
-    router.post('/v1/user/password/reset/verification', userVerificationController.sendVerificationEmail);
-    router.post('/v1/user/password/reset/update', userVerificationController.resetPassword);
-
-    // /* Media routes */
-    // //todo: Handle multiple images with same name
-    // router.post('/v1/media/save/image', requireAuth, cpUpload, mediaController.saveImage);
-    // router.post('/v1/media/update', requireAuth, mediaController.updateMedia);
-    // router.get('/v1/media/listAll', requireAuth, mediaController.listAllMedia);
-    // router.get('/v1/media/get', requireAuth, mediaController.readMedia);
-    // router.delete('/v1/media/delete', requireAuth, mediaController.deleteMedia);
+    // router.post('/v1/user/password/reset/verification', userVerificationController.sendVerificationEmail);
+    // router.post('/v1/user/password/reset/update', userVerificationController.resetPassword);
 
     /* Environment variable routes */
     router.get('/v1/env/host', oauthController.getHost);

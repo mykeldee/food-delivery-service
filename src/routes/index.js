@@ -32,7 +32,7 @@ switch (process.env.NODE_ENV) {
     apiPrepend = "stage"
     break
   case "mind-spa-testing":
-    apiPrepend = "prod"
+    apiPrepend = "test"
     break
   default:
     apiPrepend = "dev"

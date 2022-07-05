@@ -14,4 +14,17 @@ const userUtils = {
     }
 };
 
+module.exports = function validateEmail(email)  {
+    let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let match = email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
+
+    if (re && match !== null){
+        return true
+    }
+    
+    return false;
+};
+
+console.log(validateEmail('holla@ff.com'))
+
 module.exports = userUtils;
