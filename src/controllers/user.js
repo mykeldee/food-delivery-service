@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const restResponse = require('../lib/rest_response');
 const fs = require('fs');
 const uuid = require('uuid');
-const validateEmail = require('../utils/user')
+const {validateEmail} = require('../utils/user')
 
 console.log(models)
 
@@ -26,7 +26,7 @@ const userController = {
         userData.email_id = req.body.email_id;
       }else{
         res.status = 400;
-        res.json({ success: false, message: 'Please provide valid data' });
+        res.json({ success: false, message: 'Please provide a valid email address' });
         return res;
       }
     }

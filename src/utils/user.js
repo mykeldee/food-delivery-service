@@ -14,7 +14,7 @@ const userUtils = {
     }
 };
 
-module.exports = function validateEmail(email)  {
+const validateEmail = (email) => {
     let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     let match = email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
 
@@ -25,6 +25,4 @@ module.exports = function validateEmail(email)  {
     return false;
 };
 
-console.log(validateEmail('holla@ff.com'))
-
-module.exports = userUtils;
+module.exports = {validateEmail, userUtils}
