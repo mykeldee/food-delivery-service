@@ -26,7 +26,7 @@ const jwtOptions = {
 };
 
 const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
-    if (!payload.id) return done(new Error('Auth Error'), false);
+    if (!payload.email) return done(new Error('Auth Error'), false);
     //console.log("user Id: ", payload.id);
     userController.findById(payload.id, user => done(null, user), err => done(new Error('User Not Found: Require Auth'), false));
 });
