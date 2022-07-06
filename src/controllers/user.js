@@ -109,7 +109,7 @@ const userController = {
       commanUtils.isStringNonEmpty(email_id) &&
       commanUtils.isStringNonEmpty(password)
     ) {
-      models.findOne({ where: { email_id } }).then(user => {
+      models.findOne({ email_id }).then(user => {
         if (user === null) {
           res.status = 401;
           res.json({
@@ -128,8 +128,7 @@ const userController = {
                   user: user,
                   access_token: jwt.sign(
                     {
-                      id: user.id,
-                      email_id: user.email_id,
+                      email: user.email_id,
                     },
                     process.env.JWT_SECRET,
                     {
@@ -178,7 +177,6 @@ const userController = {
                     user: dataValues,
                     access_token: jwt.sign(
                       {
-                        id: dataValues.id,
                         email_id: dataValues.email_id,
                       },
                       process.env.JWT_SECRET,

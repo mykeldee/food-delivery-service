@@ -7,9 +7,11 @@ const requireAuth = (req, res, next) => {
   passport.authenticate("jwt", { session: false }, (err, user, info) => {
     let response = getBaseResponse()
     if (err) {
+      console.log('the user is', user);
       response.success = false
       response.errors.push(err.message || err)
     } else if (!user) {
+      console.log('the user is',user);
       response.success = false
       response.errors.push("User not Found")
     }

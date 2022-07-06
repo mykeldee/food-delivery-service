@@ -3,9 +3,11 @@ const express = require('express'),
     multerUpload = require('../lib/multer'),
     oauthController = require('../controllers/oauth'),
     userController = require('../controllers/user'),
-    userVerificationController = require('../controllers/user_verification');
+    userVerificationController = require('../controllers/user_verification'),
+    {menuController,restaurantController} = require('../controllers/restaurants');
 
 module.exports = (requireAuth) => {
+
     /* authentication routes */
     router.post('/v1/oauth/login', oauthController.login);
     router.get('/v1/oauth/token/validate', oauthController.validateToken);
@@ -20,6 +22,12 @@ module.exports = (requireAuth) => {
     router.post('/v1/user/profile', userController.updateProfile);
     router.post('/v1/user/profileImage', requireAuth, cpUpload, userController.uploadProfileImage);
     router.get('/v1/user/profileImage', requireAuth, userController.readProfileImage);
+
+    /* restaurants routes */
+    router.get('/v1/restaurants', requireAuth, restaurantController.getRestaurants);
+    // router.post('/v1/restaurants', restaurantController.addRestaurant);
+    // router.get('/v1/restaurants/menu', menuController.getItem);
+    // router.post('/v1/restaurants/menu', menuController.addItem);
 
     /* User Password routes */
     // router.post('/v1/user/password/reset/verification', userVerificationController.sendVerificationEmail);
